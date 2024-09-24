@@ -59,6 +59,10 @@ export default function Lab1() {
             <li>Flip and cook the other side.</li>
             <li>Serve and enjoy!</li>
           </ol>
+          My favorite recipe:
+          <ol id="wd-your-favorite-recipe">
+            {/* complete on your own */}
+          </ol>
           <h5>Unordered List Tag</h5>
           My favorite books (in no particular order)
           <ul id="wd-my-books">
