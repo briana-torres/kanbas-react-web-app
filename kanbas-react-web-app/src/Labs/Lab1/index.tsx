@@ -59,9 +59,18 @@ export default function Lab1() {
             <li>Flip and cook the other side.</li>
             <li>Serve and enjoy!</li>
           </ol>
-          My favorite recipe:
+          My favorite recipe for Shrimp and Grits:
           <ol id="wd-your-favorite-recipe">
-            {/* complete on your own */}
+            <li>Season shrimp with salt, pepper, and Cajun seasoning.</li>
+            <li>Heat oil in a skillet and cook shrimp until pink, then set aside.</li>
+            <li>In the same skillet, sauté garlic and onions until softened.</li>
+            <li>Add chicken broth and bring to a simmer.</li>
+            <li>Slowly stir in grits, whisking continuously to avoid lumps.</li>
+            <li>Lower heat and cook grits until creamy, about 15-20 minutes.</li>
+            <li>Stir in butter, cheese, and a splash of heavy cream for richness.</li>
+            <li>Return cooked shrimp to the skillet to heat through.</li>
+            <li>Spoon the creamy grits onto plates and top with shrimp and sauce.</li>
+            <li>Garnish with fresh parsley and bacon then serve immediately. Enjoy!</li>
           </ol>
           <h5>Unordered List Tag</h5>
           My favorite books (in no particular order)
@@ -71,6 +80,14 @@ export default function Lab1() {
             <li>Ender's Game</li>
             <li>Red Mars</li>
             <li>The Forever War</li>
+          </ul>
+          Your favorite books (in no particular order)
+          <ul id="wd-your-books">
+            <li>Fancy Nancy</li>
+            <li>Pinkalicious</li>
+            <li>Junie B. Jones</li>
+            <li>Amelia Bedelia</li>
+            <li>The Babysitter's Club</li>
           </ul>
         </div>
   
@@ -122,11 +139,12 @@ export default function Lab1() {
             id="wd-starship"
             width="400px"
             src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"
+            alt=""
           />
           <br />
           Loading a local image:
           <br />
-          <img id="wd-teslabot" src="images/teslabot.jpg" height="200px" />
+          <img id="wd-teslabot" src="images/teslabot.jpg" alt="" height="200px" />
         </div>
   
         <div id="wd-forms">
