@@ -2,16 +2,15 @@ import ModulesControls from "./ModuleControls";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
-import CourseStatus from "../Home/Status";
 
 export default function Modules() {
   return (
-    <div className="d-flex flex-column flex-lg-row">
-      <div className="flex-fill" >
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <ModulesControls /><br /><br /><br /><br />
+    <div className="d-flex flex-column">
+      <div className="flex-fill">
+        <div className="d-flex justify-content-end align-items-center mb-3">
+          <ModulesControls />
         </div>
-        <ul id="wd-modules" className="list-group rounded-0" style={{ width: "650px" }}>
+        <ul id="wd-modules" className="list-group rounded-0 w-100">
           <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
             <div className="wd-title p-3 ps-2 bg-secondary">
               <BsGripVertical className="me-2 fs-3" />
