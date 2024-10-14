@@ -12,10 +12,10 @@ export default function Courses() {
   return (
     <div className="row">
       <div className="col-10">
-        <h2 className="text-danger">
-          <FaAlignJustify className="me-2" />
+        <h2 className="text-black">
+          <FaAlignJustify className="me-3" />
           Course 1234
-        </h2>
+        </h2><br />
         <div className="row">
           <div className="col-md-3 col-lg-2 d-none d-md-block">
             <CoursesNavigation />
