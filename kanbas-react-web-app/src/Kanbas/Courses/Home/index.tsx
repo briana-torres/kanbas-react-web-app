@@ -3,17 +3,13 @@ import CourseStatus from "./Status";
 
 export default function Home() {
   return (
-    <div>
-      <table>
-        <tr>
-          <td valign="top">
-            <Modules />
-          </td>
-          <td valign="top">
-            <CourseStatus />
-          </td>
-        </tr>
-      </table>
+    <div className="row">
+      <div className="col-12 col-lg-10">
+        <Modules />
+      </div>
+      <div className="col-lg-2 d-none d-lg-block pe-0">
+        <CourseStatus />
+      </div>
     </div>
   );
 }

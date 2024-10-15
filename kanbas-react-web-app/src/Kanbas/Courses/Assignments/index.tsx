@@ -1,43 +1,64 @@
+import { BsSearch, BsPlusCircleFill } from "react-icons/bs";
+import { BsGripVertical } from "react-icons/bs";
+import GreenCheckmark from "../Modules/GreenCheckmark";
+import { IoEllipsisVertical } from "react-icons/io5";
+import { Link} from "react-router-dom";
+
 export default function Assignments() {
-    return (
-      <div id="wd-assignments">
-        <input id="wd-search-assignment" placeholder="Search for Assignments" />
-        <button id="wd-add-assignment-group">+ Group</button>
-        <button id="wd-add-assignment">+ Assignment</button>
-  
-        <h3 id="wd-assignments-title">
-          ASSIGNMENTS 40% of Total <button>+</button>
-        </h3>
-  
-        <ul id="wd-assignment-list">
-          <li className="wd-assignment-list-item">
-            <a className="wd-assignment-link" href="#/Kanbas/Courses/1234/Assignments/123">
-              A1 - ENV + HTML
-            </a>
-            <p>Multiple Modules | <strong>Not available until May 6 at 12:00am</strong> | <br />
-              <strong>Due</strong> May 13 at 11:59pm | 100 pts
-            </p>
+  return (
+    <div className="d-flex flex-column flex-lg-row">
+      <div className="flex-fill">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div className="flex-grow-1 me-2">
+            <div className="input-group">
+              <span className="input-group-text bg-white">
+                <BsSearch />
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search for Assignment"
+              />
+            </div>
+          </div>
+          <div>
+            <button className="btn btn-secondary me-2">
+              <BsPlusCircleFill className="me-1" /> Group
+            </button>
+            <button className="btn btn-danger">
+              <BsPlusCircleFill className="me-1" /> Assignment
+            </button>
+          </div>
+        </div>
+        <ul className="list-group">
+          <li className="list-group-item d-flex justify-content-between align-items-center bg-light">
+            <span className="fw-bold">ASSIGNMENTS</span>
+            <span>40% of Total</span>
           </li>
-  
-          <li className="wd-assignment-list-item">
-            <a className="wd-assignment-link" href="#/Kanbas/Courses/1234/Assignments/124">
-              A2 - CSS + BOOTSTRAP
-            </a>
-            <p>Multiple Modules | <strong>Not available until May 13 at 12:00am</strong> | <br />
-              <strong>Due</strong> May 20 at 11:59pm | 100 pts
-            </p>
-          </li>
-  
-          <li className="wd-assignment-list-item">
-            <a className="wd-assignment-link" href="#/Kanbas/Courses/1234/Assignments/125">
-              A3 - JAVASCRIPT + REACT
-            </a>
-            <p>Multiple Modules | <strong>Not available until May 20 at 12:00am</strong> | <br />
-              <strong>Due</strong> May 27 at 11:59pm | 100 pts
-            </p>
-          </li>
+          {["A1", "A2", "A3"].map((assignment, index) => (
+            <li key={index} className="list-group-item d-flex border-0 border-start border-success border-5">
+              <div className="me-3 d-flex align-items-center">
+                <BsGripVertical />
+                <i className="far fa-file-alt text-success fs-4 ms-2"></i>
+              </div>
+              <div className="flex-grow-1">
+                <Link to={`Editor`} className="text-decoration-none text-dark">
+                  <div className="fw-bold">{assignment}</div>
+                  <div className="text-secondary">
+                    Multiple Modules | Not available until May {6 + index * 7} at 12:00am |
+                    <br />
+                    Due May {13 + index * 7} at 11:59pm | 100 pts
+                  </div>
+                </Link>
+              </div>
+              <div className="d-flex align-items-center">
+                <GreenCheckmark />
+                <IoEllipsisVertical className="ms-2 fs-4" />
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

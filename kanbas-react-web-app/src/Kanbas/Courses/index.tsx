@@ -4,30 +4,36 @@ import Modules from "./Modules";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import CoursesNavigation from "./Navigation";
+import KanbasNavigation from "../Navigation"; // Assuming you have this component
+import { FaAlignJustify } from "react-icons/fa";
+import PeopleTable from "./People/Table";
 
 export default function Courses() {
   return (
-    <div>
-      <h2>Course 1234</h2>
-      <table>
-        <tr>
-          <td valign="top">
+    <div className="row">
+      <div className="col-10">
+        <h2 className="text-black">
+          <FaAlignJustify className="me-3" />
+          Course 1234
+        </h2><br />
+        <div className="row">
+          <div className="col-md-3 col-lg-2 d-none d-md-block">
             <CoursesNavigation />
-          </td>
-          <td valign="top">
+          </div>
+          <div className="col-12 col-md-9 col-lg-10">
             <Routes>
               <Route path="/" element={<Navigate to="Home" />} />
               <Route path="Home" element={<Home />} />
               <Route path="Modules" element={<Modules />} />
               <Route path="Grades" element={<h1>Grades</h1>} />
-              <Route path="Assignments" element={<Assignments/>}/>
+              <Route path="Assignments" element={<Assignments />} />
               <Route path="Assignments/:aid" element={<AssignmentEditor />} />
               <Route path="Quizzes" element={<h1>Quizzes</h1>} />
-              <Route path="People" element={<h1>People</h1>} />
+              <Route path="People" element={<PeopleTable />} />
             </Routes>
-          </td>
-        </tr>
-      </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
