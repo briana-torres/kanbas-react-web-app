@@ -15,7 +15,7 @@ export default function Labs() {
         <Route path="/" element={<Navigate to="Lab1" />} />
         <Route path="Lab1" element={<Lab1 />} />
         <Route path="Lab2" element={<Lab2 />} />
-        <Route path="Lab3" element={<Lab3 />} />
+        <Route path="Lab3/*" element={<Lab3 />} />
         <Route path="github-repo" element={<div id="wd-github">
           <Navigate to="https://github.com/briana-torres/kanbas-react-web-app/tree/a1" />
         </div>}
