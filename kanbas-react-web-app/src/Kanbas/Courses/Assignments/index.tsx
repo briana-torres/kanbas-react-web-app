@@ -1,10 +1,26 @@
-import { BsSearch, BsPlusCircleFill } from "react-icons/bs";
-import { BsGripVertical } from "react-icons/bs";
-import GreenCheckmark from "../Modules/GreenCheckmark";
+import { useParams, Link } from "react-router-dom";
+import { assignments } from "../../Database";
+import { BsSearch, BsPlusCircleFill, BsGripVertical } from "react-icons/bs";
 import { IoEllipsisVertical } from "react-icons/io5";
-import { Link} from "react-router-dom";
+import GreenCheckmark from "../Modules/GreenCheckmark";
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const courseAssignments = assignments.filter(
+    (assignment) => assignment.course === cid
+  );
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
+
   return (
     <div className="d-flex flex-column flex-lg-row">
       <div className="flex-fill">
@@ -35,19 +51,20 @@ export default function Assignments() {
             <span className="fw-bold">ASSIGNMENTS</span>
             <span>40% of Total</span>
           </li>
-          {["A1", "A2", "A3"].map((assignment, index) => (
-            <li key={index} className="list-group-item d-flex border-0 border-start border-success border-5">
+          {courseAssignments.map((assignment) => (
+            <li key={assignment._id} className="list-group-item d-flex border-0 border-start border-success border-5">
               <div className="me-3 d-flex align-items-center">
                 <BsGripVertical />
                 <i className="far fa-file-alt text-success fs-4 ms-2"></i>
               </div>
               <div className="flex-grow-1">
-                <Link to={`Editor`} className="text-decoration-none text-dark">
-                  <div className="fw-bold">{assignment}</div>
+                <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} className="text-decoration-none text-dark">
+                  <div className="fw-bold">{assignment.title}</div>
                   <div className="text-secondary">
-                    Multiple Modules | Not available until May {6 + index * 7} at 12:00am |
-                    <br />
-                    Due May {13 + index * 7} at 11:59pm | 100 pts
+                    <span className="text-danger">Multiple Modules</span> | <span className="fw-bold">Not available until</span> {formatDate(assignment.availableFromDate)} |
+                  </div>
+                  <div className="text-secondary">
+                    <span className="fw-bold">Due</span> {formatDate(assignment.dueDate)} | {assignment.points} pts
                   </div>
                 </Link>
               </div>
