@@ -6,6 +6,7 @@ import Lab4 from "./Lab4";
 import TOC from "./TOC";
 import store from "./store"; 
 import { Provider } from "react-redux";
+// import
 
 export default function Labs() {
   return (
