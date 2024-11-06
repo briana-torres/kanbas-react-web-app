@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useParams, useLocation } from "react-router";
+import { courses } from "../Database";
 import Home from "./Home";
 import Modules from "./Modules";
 import Assignments from "./Assignments";
@@ -9,12 +10,16 @@ import { FaAlignJustify } from "react-icons/fa";
 import PeopleTable from "./People/Table";
 
 export default function Courses() {
+  const { cid } = useParams();
+  const course = courses.find((course) => course._id === cid);
+  const { pathname } = useLocation();
+
   return (
     <div className="row">
       <div className="col-10">
         <h2 className="text-black">
           <FaAlignJustify className="me-3" />
-          Course 1234
+          {course ? `${course.name} > ${pathname.split("/")[4] || "Home"}` : "Course Not Found"}
         </h2><br />
         <div className="row">
           <div className="col-md-3 col-lg-2 d-none d-md-block">
