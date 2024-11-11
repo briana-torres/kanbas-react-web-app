@@ -3,6 +3,7 @@ import { assignments } from "../../Database";
 import { BsSearch, BsPlusCircleFill, BsGripVertical } from "react-icons/bs";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
+import { useSelector } from "react-redux";
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -21,6 +22,9 @@ export default function Assignments() {
     });
   };
 
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const isFaculty = currentUser?.role === "FACULTY";
+
   return (
     <div className="d-flex flex-column flex-lg-row">
       <div className="flex-fill">
@@ -37,14 +41,16 @@ export default function Assignments() {
               />
             </div>
           </div>
-          <div>
-            <button className="btn btn-secondary me-2">
-              <BsPlusCircleFill className="me-1" /> Group
-            </button>
-            <button className="btn btn-danger">
-              <BsPlusCircleFill className="me-1" /> Assignment
-            </button>
-          </div>
+          {isFaculty && (
+            <div>
+              <button className="btn btn-secondary me-2">
+                <BsPlusCircleFill className="me-1" /> Group
+              </button>
+              <button className="btn btn-danger">
+                <BsPlusCircleFill className="me-1" /> Assignment
+              </button>
+            </div>
+          )}
         </div>
         <ul className="list-group">
           <li className="list-group-item d-flex justify-content-between align-items-center bg-light">
