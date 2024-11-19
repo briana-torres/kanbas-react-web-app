@@ -1,14 +1,14 @@
 import { Routes, Route, Navigate, useParams, useLocation } from "react-router";
-import { courses } from "../Database";
 import Home from "./Home";
 import Modules from "./Modules";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import CoursesNavigation from "./Navigation";
+// import KanbasNavigation from "../Navigation"; // Assuming you have this component
 import { FaAlignJustify } from "react-icons/fa";
 import PeopleTable from "./People/Table";
 
-export default function Courses() {
+export default function Courses({ courses }: { courses: any[] }) {
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
