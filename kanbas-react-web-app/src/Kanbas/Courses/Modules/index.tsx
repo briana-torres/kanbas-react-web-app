@@ -38,6 +38,15 @@ export default function Modules() {
     }
   };
 
+  const saveModule = async (module: any) => {
+    try {
+      await modulesClient.updateModule(module);
+      dispatch(updateModule(module));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchModules();
   }, []);
@@ -66,7 +75,7 @@ export default function Modules() {
                     onChange={(e) => dispatch(updateModule({ ...module, name: e.target.value }))}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
-                        dispatch(updateModule({ ...module, editing: false }));
+                        saveModule({ ...module, editing: false });
                       }
                     }}
                     defaultValue={module.name}
