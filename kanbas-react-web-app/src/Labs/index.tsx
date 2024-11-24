@@ -25,8 +25,16 @@ export default function Labs() {
         <Route path="Lab3" element={<Lab3 />} />
         <Route path="Lab4" element={<Lab4 />} />
         <Route path="Lab5" element={<Lab5 />} />
-        <Route path="github-repo" element={<div id="wd-github">
+        <Route path="web-app-repo" element={<div id="wd-github">
           <Navigate to="https://github.com/briana-torres/kanbas-react-web-app/tree/a1" />
+        </div>}
+        />
+        <Route path="server-app-repo" element={<div id="wd-github">
+          <Navigate to="https://github.com/briana-torres/kanbas-node-server-app/tree/a5" />
+        </div>}
+        />
+        <Route path="server-app" element={<div id="wd-github">
+          <Navigate to="https://kanbas-node-server-app-3qhi.onrender.com" />
         </div>}
         />
       </Routes>
