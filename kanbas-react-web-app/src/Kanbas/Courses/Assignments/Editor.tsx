@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAssignment, addAssignment } from "./reducer";
+import * as client from "./client";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -32,20 +33,26 @@ export default function AssignmentEditor() {
     }
   }, [assignment]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const submissionData = {
       ...formData,
-      dueDate: new Date(formData.dueDate).toISOString().slice(0, 19),
-      availableFromDate: new Date(formData.availableFromDate).toISOString().slice(0, 19),
-      availableUntilDate: new Date(formData.availableUntilDate).toISOString().slice(0, 19)
+      dueDate: new Date(formData.dueDate).toISOString(),
+      availableFromDate: new Date(formData.availableFromDate).toISOString(),
+      availableUntilDate: new Date(formData.availableUntilDate).toISOString()
     };
 
-    if (aid) {
-      dispatch(updateAssignment({ ...submissionData, _id: aid }));
-    } else {
-      dispatch(addAssignment(submissionData));
+    try {
+      if (aid) {
+        await client.updateAssignment(aid, submissionData);
+        dispatch(updateAssignment({ ...submissionData, _id: aid }));
+      } else {
+        const newAssignment = await client.createAssignment(submissionData);
+        dispatch(addAssignment(newAssignment));
+      }
+      navigate(`/Kanbas/Courses/${cid}/Assignments`);
+    } catch (error) {
+      console.error("Error saving assignment:", error);
     }
-    navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
 
   return (

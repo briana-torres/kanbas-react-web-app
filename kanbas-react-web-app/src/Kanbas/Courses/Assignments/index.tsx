@@ -3,10 +3,11 @@ import { BsSearch, BsPlusCircleFill, BsGripVertical } from "react-icons/bs";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAssignment } from "./reducer";
+import { deleteAssignment, setAssignments } from "./reducer";
 import { FaTrash, FaPencil } from "react-icons/fa6";
 import AssignmentDeleteDialog from "./AssignmentDeleteDialog";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import * as client from "./client";
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -38,12 +39,22 @@ export default function Assignments() {
     setSelectedAssignment(assignment);
   };
 
-  const handleConfirmDelete = () => {
+  const fetchAssignments = async () => {
+    const assignments = await client.findAssignmentsForCourse(cid as string);
+    dispatch(setAssignments(assignments));
+  };
+
+  const handleConfirmDelete = async () => {
     if (selectedAssignment) {
+      await client.deleteAssignment(selectedAssignment._id);
       dispatch(deleteAssignment(selectedAssignment._id));
     }
     setSelectedAssignment(null);
   };
+
+  useEffect(() => {
+    fetchAssignments();
+  }, [cid]);
 
   return (
     <>

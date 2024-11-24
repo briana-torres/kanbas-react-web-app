@@ -4,7 +4,6 @@ import Modules from "./Modules";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import CoursesNavigation from "./Navigation";
-// import KanbasNavigation from "../Navigation"; // Assuming you have this component
 import { FaAlignJustify } from "react-icons/fa";
 import PeopleTable from "./People/Table";
 

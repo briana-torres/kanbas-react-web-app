@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { enrollments } from "../Database";
+import * as client from "./enrollmentClient";
 
 const initialState = {
-  enrollments: enrollments,
+  enrollments: [] as any[],
   showAllCourses: false,
 };
 
@@ -10,18 +10,16 @@ const enrollmentSlice = createSlice({
   name: "enrollments",
   initialState,
   reducers: {
+    setEnrollments: (state, action) => {
+      state.enrollments = action.payload as any[];
+    },
     toggleShowAllCourses: (state) => {
       state.showAllCourses = !state.showAllCourses;
     },
-    enrollInCourse: (state, action) => {
-      const newEnrollment = {
-        _id: new Date().getTime().toString(),
-        user: action.payload.userId,
-        course: action.payload.courseId,
-      };
-      state.enrollments.push(newEnrollment);
+    addEnrollment: (state, action) => {
+      state.enrollments.push(action.payload as any);
     },
-    unenrollFromCourse: (state, action) => {
+    removeEnrollment: (state, action) => {
       state.enrollments = state.enrollments.filter(
         (enrollment) =>
           !(enrollment.user === action.payload.userId && 
@@ -31,6 +29,25 @@ const enrollmentSlice = createSlice({
   },
 });
 
-export const { toggleShowAllCourses, enrollInCourse, unenrollFromCourse } = 
-  enrollmentSlice.actions;
+export const { setEnrollments, toggleShowAllCourses, 
+               addEnrollment, removeEnrollment } = enrollmentSlice.actions;
+
+// Thunks for API integration
+export const fetchEnrollments = () => async (dispatch: any) => {
+  const enrollments = await client.findAllEnrollments();
+  dispatch(setEnrollments(enrollments));
+};
+
+export const enrollInCourseThunk = 
+  (userId: string, courseId: string) => async (dispatch: any) => {
+    const enrollment = await client.enrollInCourse(userId, courseId);
+    dispatch(addEnrollment(enrollment));
+};
+
+export const unenrollFromCourseThunk = 
+  (userId: string, courseId: string) => async (dispatch: any) => {
+    await client.unenrollFromCourse(userId, courseId);
+    dispatch(removeEnrollment({ userId, courseId }));
+};
+
 export default enrollmentSlice.reducer; 
