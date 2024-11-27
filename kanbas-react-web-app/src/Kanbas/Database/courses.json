@@ -1,8 +1,7 @@
 [
   {
-    "_id": "RS101",
+    "number": "RS101",
     "name": "Rocket Propulsion",
-    "number": "RS4550",
     "startDate": "2023-01-10",
     "endDate": "2023-05-15",
     "department": "D123",
@@ -10,9 +9,8 @@
     "description": "This course provides an in-depth study of the fundamentals of rocket propulsion, covering topics such as propulsion theory, engine types, fuel chemistry, and the practical applications of rocket technology. Designed for students with a strong background in physics and engineering, the course includes both theoretical instruction and hands-on laboratory work"
   },
   {
-    "_id": "RS102",
+    "number": "RS102",
     "name": "Aerodynamics",
-    "number": "RS4560",
     "startDate": "2023-01-10",
     "endDate": "2023-05-15",
     "department": "D123",
@@ -20,9 +18,8 @@
     "description": "This course offers a comprehensive exploration of aerodynamics, focusing on the principles and applications of airflow and its effects on flying objects. Topics include fluid dynamics, airfoil design, lift and drag forces, and the aerodynamic considerations in aircraft design. The course blends theoretical learning with practical applications, suitable for students pursuing a career in aeronautics or astronautics engineering."
   },
   {
-    "_id": "RS103",
+    "number": "RS103",
     "name": "Spacecraft Design",
-    "number": "RS4570",
     "startDate": "2023-01-10",
     "endDate": "2023-05-15",
     "department": "D123",
@@ -30,7 +27,6 @@
     "description": "This course delves into the principles and practices of spacecraft design, offering students a detailed understanding of the engineering and technology behind spacecraft systems. Key topics include spacecraft structure, propulsion, power systems, thermal control, and payload integration. Emphasizing both theoretical concepts and practical skills, the course prepares students for careers in the space industry, with a focus on innovative design and problem-solving in the context of current and future space missions"
   },
   {
-    "_id": "RS104",
     "name": "Organic Chemistry",
     "number": "CH1230",
     "startDate": "2023-01-10",
@@ -40,7 +36,6 @@
     "description": "Organic Chemistry is an in-depth course that explores the structure, properties, composition, and reactions of organic compounds and materials. The course covers various topics including hydrocarbons, functional groups, stereochemistry, and organic synthesis techniques. Students will learn about the mechanisms of organic reactions, spectroscopic methods for structure determination, and the role of organic chemistry in biological systems. Emphasis is placed on problem-solving and laboratory skills, preparing students for advanced studies in chemistry, medicine, and related fields."
   },
   {
-    "_id": "RS105",
     "name": "Inorganic Chemistry",
     "number": "CH1240",
     "startDate": "2023-01-10",
@@ -50,7 +45,6 @@
     "description": "Inorganic Chemistry focuses on the properties, structures, and behaviors of inorganic and organometallic compounds. This course covers a range of topics including coordination chemistry, metal complexes, bonding theories, symmetry, and crystal field theory. Students will also explore the role of inorganic chemistry in real-world applications such as catalysis, materials science, and bioinorganic processes. Laboratory work emphasizes synthesis and analysis of inorganic compounds, fostering a deeper understanding of theoretical concepts."
   },
   {
-    "_id": "RS106",
     "name": "Physical Chemistry",
     "number": "CH1250",
     "startDate": "2023-01-10",
@@ -60,7 +54,6 @@
     "description": "Physical Chemistry merges the principles of physics and chemistry to understand the physical properties of molecules, the forces that act upon them, and the chemical reactions they undergo. Key topics include thermodynamics, kinetics, quantum mechanics, and spectroscopy. The course provides a comprehensive understanding of molecular behavior, reaction dynamics, and the application of mathematical methods in solving chemical problems. Labs focus on experimental techniques and data analysis, equipping students with skills necessary for research and advanced study in chemistry and related fields."
   },
   {
-    "_id": "RS107",
     "name": "Ancient Languages and Scripts of Middle-earth",
     "number": "ME101",
     "startDate": "2023-01-10",
@@ -71,7 +64,6 @@
     "author": "654f9ec2ea7ead465908d1e3"
   },
   {
-    "_id": "RS108",
     "name": "Wizards, Elves, and Men: Inter-species Diplomacy in Middle-earth",
     "number": "ME102",
     "startDate": "2023-01-10",
@@ -82,7 +74,6 @@
     "author": "654f9ec2ea7ead465908d1e3"
   },
   {
-    "_id": "RS109",
     "name": "History and Practice of Middle-earth Magic",
     "number": "ME103",
     "startDate": "2023-01-10",
@@ -93,7 +84,6 @@
     "author": "654f9ec2ea7ead465908d1e3"
   },
   {
-    "_id": "RS110",
     "name": "Principles of Democratic Education",
     "number": "EDU201",
     "startDate": "2023-01-10",
@@ -103,7 +93,6 @@
     "description": "This course examines the foundations of democratic education, emphasizing the role of education in fostering civic responsibility, critical thinking, and social equality. It explores historical and contemporary models of democratic schooling, the importance of participatory learning, and the development of educational systems that reflect democratic values. Students will engage in discussions on the challenges and opportunities of implementing democratic principles in diverse educational settings."
   },
   {
-    "_id": "RS111",
     "name": "Philosophy of Independence and Liberation",
     "number": "HIS301",
     "startDate": "2023-01-10",
@@ -113,7 +102,6 @@
     "description": "This course provides an in-depth analysis of the philosophical underpinnings of independence and liberation movements, with a focus on Latin American history. It covers the ideologies that fueled the fight for independence, the impact of Enlightenment thought, and the contributions of key figures like Simón Bolívar. The course encourages students to critically examine the concepts of freedom, autonomy, and nation-building in the context of historical and contemporary struggles for liberation."
   },
   {
-    "_id": "RS112",
     "name": "Innovations in Early 19th Century Education",
     "number": "EDU303",
     "startDate": "2023-01-10",
@@ -123,7 +111,6 @@
     "description": "Focusing on the early 19th century, this course explores innovative educational practices and theories of the time. It highlights the work of leading educational reformers, including Simon Rodríguez, and their contributions to modern pedagogy. Students will study the evolution of educational methods, the integration of practical and theoretical knowledge, and the role of education in social change. The course includes a critical assessment of the lasting impacts of these early innovations on contemporary education systems."
   },
   {
-    "_id": "RS113",
     "name": "Foundations of Christian Ethics",
     "number": "THEO101",
     "startDate": "2023-01-10",
@@ -134,7 +121,6 @@
     "author": "65500111ea7ead465908d1fa"
   },
   {
-    "_id": "RS114",
     "name": "Early Christianity and the Apostolic Age",
     "number": "HIS201",
     "startDate": "2023-01-10",
@@ -145,7 +131,6 @@
     "author": "65500111ea7ead465908d1fa"
   },
   {
-    "_id": "RS115",
     "name": "Leadership and Service in Christian Communities",
     "number": "MIN301",
     "startDate": "2023-01-10",
@@ -156,7 +141,6 @@
     "author": "65500111ea7ead465908d1fa"
   },
   {
-    "_id": "RS116",
     "name": "Sufi Philosophy and Mystical Traditions",
     "number": "ISL301",
     "startDate": "2023-01-10",
@@ -167,7 +151,6 @@
     "author": "655000a4ea7ead465908d1f5"
   },
   {
-    "_id": "RS117",
     "name": "Ethical Wisdom in Islamic Teachings",
     "number": "ISL202",
     "startDate": "2023-01-10",
@@ -178,7 +161,6 @@
     "author": "655000a4ea7ead465908d1f5"
   },
   {
-    "_id": "RS118",
     "name": "Understanding the Unseen: Islamic Esotericism",
     "number": "ISL403",
     "startDate": "2023-01-10",
@@ -189,7 +171,6 @@
     "author": "655000a4ea7ead465908d1f5"
   },
   {
-    "_id": "RS119",
     "name": "Ancient Chinese Environmental Management",
     "number": "ENV101",
     "startDate": "2023-01-10",
@@ -199,7 +180,6 @@
     "description": "This course explores the principles and practices of environmental management in ancient China, with a focus on the legendary achievements of Yu the Great in flood control and irrigation. Students will examine ancient Chinese approaches to water management, agriculture, and land use, and their relevance to modern environmental challenges. The course also delves into the integration of these practices with traditional Chinese philosophies and governance."
   },
   {
-    "_id": "RS120",
     "name": "Leadership Lessons from Chinese Mythology",
     "number": "MGT201",
     "startDate": "2023-01-10",
@@ -209,7 +189,6 @@
     "description": "Drawing on stories from Chinese mythology and history, this course examines the qualities and actions of effective leaders, using Yu the Great as a central figure. Students will explore themes of perseverance, vision, and ethical governance as demonstrated in Yu's legendary endeavors. The course also covers leadership lessons from other notable figures in Chinese mythology and their impact on the formation of Chinese cultural and political identity."
   },
   {
-    "_id": "RS121",
     "name": "Hydraulic Engineering in Ancient Civilizations",
     "number": "ENG303",
     "startDate": "2023-01-10",
