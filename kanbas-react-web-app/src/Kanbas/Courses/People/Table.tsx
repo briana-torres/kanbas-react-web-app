@@ -1,7 +1,7 @@
 import { FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import PeopleDetails from "./Details";
-
+// deploy 
 export default function PeopleTable({ users = [] }: { users?: any[] }) {
   const navigate = useNavigate();
 
