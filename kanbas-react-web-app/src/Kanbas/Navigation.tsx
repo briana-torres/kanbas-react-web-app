@@ -17,7 +17,7 @@ export default function KanbasNavigation() {
          className="list-group rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2">
       <a id="wd-neu-link" target="_blank" rel="noreferrer noopener" href="https://www.northeastern.edu/"
         className="list-group-item bg-black border-0 text-center">
-        <img src="images/NEU.png" width="75px" alt="NEU" /></a>
+        <img src="/images/NEU.png" width="75px" alt="NEU" /></a>
       <Link to="/Kanbas/Account" className={`list-group-item text-center border-0 bg-black
             ${pathname.includes("Account") ? "bg-white text-danger" : "bg-black text-white"}`}>
         <FaRegCircleUser className={`fs-1 ${pathname.includes("Account") ? "text-danger" : "text-white"}`} />

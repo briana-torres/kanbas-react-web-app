@@ -13,8 +13,7 @@ import * as courseClient from "./Courses/client";
 
 export default function Kanbas() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const isFaculty = currentUser?.role === "FACULTY";
-  const [courses, setCourses] = useState<any[]>([]);
+  const isFaculty = currentUser?.role === "FACULTY" || currentUser?.role === "ADMIN";
   const [course, setCourse] = useState<any>({
     name: "New Course",
     number: "New Number",
@@ -24,9 +23,10 @@ export default function Kanbas() {
     description: "New Description"
   });
 
+  const [courses, setCourses] = useState<any[]>([]);
   const fetchCourses = async () => {
     try {
-      const courses = await userClient.findMyCourses();
+      const courses = await courseClient.fetchAllCourses();
       setCourses(courses);
     } catch (error) {
       console.error(error);
@@ -38,23 +38,15 @@ export default function Kanbas() {
   }, [currentUser]);
 
   const addNewCourse = async () => {
-    try {
-      const newCourse = await userClient.createCourse(course);
-      setCourses([...courses, newCourse]);
-    } catch (error) {
-      console.error(error);
-    }
+    const newCourse = await courseClient.createCourse(course);
+    setCourses([...courses, newCourse]);
   };
 
   const deleteCourse = async (courseId: string) => {
-    try {
-      await courseClient.deleteCourse(courseId);
-      setCourses(courses.filter((course) => course._id !== courseId));
-    } catch (error) {
-      console.error(error);
-    }
+    const status = await courseClient.deleteCourse(courseId);
+    setCourses(courses.filter((course) => course._id !== courseId));
   };
-
+ 
   const updateCourse = async () => {
     try {
       const status = await courseClient.updateCourse(course);
@@ -85,9 +77,9 @@ export default function Kanbas() {
                 courses={courses}
                 course={course}
                 setCourse={setCourse}
-                addNewCourse={isFaculty ? addNewCourse : () => {}}
-                deleteCourse={isFaculty ? deleteCourse : () => {}}
-                updateCourse={isFaculty ? updateCourse : () => {}}
+                addNewCourse={isFaculty ? addNewCourse : () => { }}
+                deleteCourse={isFaculty ? deleteCourse : () => { }}
+                updateCourse={isFaculty ? updateCourse : () => { }}
               />
             </ProtectedRoute>
           } />
