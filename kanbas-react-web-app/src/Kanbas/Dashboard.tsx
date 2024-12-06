@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 
 export default function Dashboard({
   courses, course, setCourse,
-  addNewCourse, deleteCourse, updateCourse
+  addNewCourse, deleteCourse, updateCourse,
+  enrolling,
+  setEnrolling,
+  updateEnrollment
 }: {
   courses: any[];
   course: any;
@@ -11,13 +14,24 @@ export default function Dashboard({
   addNewCourse: () => void;
   deleteCourse: (courseId: string) => void;
   updateCourse: () => void;
+  enrolling: boolean;
+  setEnrolling: (enrolling: boolean) => void;
+  updateEnrollment: (courseId: string, enrolled: boolean) => void;
 }) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const isStudent = currentUser?.role === "STUDENT";
 
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <h1 id="wd-dashboard-title">
+        Dashboard
+        <button 
+          onClick={() => setEnrolling(!enrolling)} 
+          className="float-end btn btn-primary"
+        >
+          {enrolling ? "My Courses" : "All Courses"}
+        </button>
+      </h1>
       <hr />
       {!isStudent && (
         <>
@@ -53,8 +67,8 @@ export default function Dashboard({
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {courses.map((course) => (
             <div key={course._id} className="col" style={{ width: "300px" }}>
-              <div className="card">
-                {isStudent ? (
+              {isStudent ? (
+                <div className="card">
                   <div className="card-body">
                     <Link
                       to={`/Kanbas/Courses/${course._id}/Home`}
@@ -66,7 +80,20 @@ export default function Dashboard({
                         style={{ height: "150px", objectFit: "cover" }}
                         alt={course.name}
                       />
-                      <h5 className="card-title mt-2">{course.name}</h5>
+                      <h5 className="card-title mt-2">
+                        {enrolling && (
+                          <button 
+                            className={`btn ${course.enrolled ? "btn-danger" : "btn-success"} float-end`}
+                            onClick={(event) => {
+                              event.preventDefault();
+                              updateEnrollment(course._id, !course.enrolled);
+                            }}
+                          >
+                            {course.enrolled ? "Unenroll" : "Enroll"}
+                          </button>
+                        )}
+                        {course.name}
+                      </h5>
                       <p className="card-text" style={{
                         display: "-webkit-box",
                         WebkitLineClamp: 2,
@@ -84,63 +111,60 @@ export default function Dashboard({
                       </Link>
                     </div>
                   </div>
-                ) : (
-                  <div>
-                    <Link
-                      to={`/Kanbas/Courses/${course._id}/Home`}
-                      className="text-decoration-none text-dark"
-                    >
-                      <img 
-                        src={`/images/${course.image || "bow.jpg"}`} 
-                        className="card-img-top"
-                        style={{ height: "150px", objectFit: "cover" }}
-                        alt={course.name}
-                      />
-                    </Link>
-                    <div className="card-body">
+                </div>
+              ) : (
+                <div className="card">
+                  <img 
+                    src={`/images/${course.image || "bow.jpg"}`} 
+                    className="card-img-top"
+                    style={{ height: "150px", objectFit: "cover" }}
+                    alt={course.name}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      {enrolling && (
+                        <button 
+                          className={`btn ${course.enrolled ? "btn-danger" : "btn-success"} float-end`}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            updateEnrollment(course._id, !course.enrolled);
+                          }}
+                        >
+                          {course.enrolled ? "Unenroll" : "Enroll"}
+                        </button>
+                      )}
+                      {course.name}
+                    </h5>
+                    <p className="card-text" style={{
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis"
+                    }}>{course.description}</p>
+                    <div className="mt-2">
                       <Link
                         to={`/Kanbas/Courses/${course._id}/Home`}
-                        className="text-decoration-none text-dark"
+                        className="btn btn-primary"
                       >
-                        <h5 className="card-title">{course.name}</h5>
-                        <p className="card-text" style={{
-                          display: "-webkit-box",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis"
-                        }}>{course.description}</p>
+                        Go
                       </Link>
-                      <div className="mt-2">
-                        <Link
-                          to={`/Kanbas/Courses/${course._id}/Home`}
-                          className="btn btn-primary"
-                        >
-                          Go
-                        </Link>
-                        <button 
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setCourse(course);
-                          }}
-                          className="btn btn-warning float-end ms-2"
-                        >
-                          Edit
-                        </button>
-                        <button 
-                          onClick={(e) => {
-                            e.preventDefault();
-                            deleteCourse(course._id);
-                          }}
-                          className="btn btn-danger float-end"
-                        >
-                          Delete
-                        </button>
-                      </div>
+                      <button 
+                        onClick={() => setCourse(course)}
+                        className="btn btn-warning float-end ms-2"
+                      >
+                        Edit
+                      </button>
+                      <button 
+                        onClick={() => deleteCourse(course._id)}
+                        className="btn btn-danger float-end"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
