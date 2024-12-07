@@ -7,7 +7,8 @@ import { deleteAssignment, setAssignments } from "./reducer";
 import { FaTrash, FaPencil } from "react-icons/fa6";
 import AssignmentDeleteDialog from "./AssignmentDeleteDialog";
 import { useState, useEffect } from "react";
-import * as client from "./client";
+import * as assignmentClient from "./client";
+import * as courseClient from "../client";
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -40,13 +41,13 @@ export default function Assignments() {
   };
 
   const fetchAssignments = async () => {
-    const assignments = await client.findAssignmentsForCourse(cid as string);
+    const assignments = await courseClient.findAssignmentsForCourse(cid as string);
     dispatch(setAssignments(assignments));
   };
 
   const handleConfirmDelete = async () => {
     if (selectedAssignment) {
-      await client.deleteAssignment(selectedAssignment._id);
+      await assignmentClient.deleteAssignment(selectedAssignment._id);
       dispatch(deleteAssignment(selectedAssignment._id));
     }
     setSelectedAssignment(null);
